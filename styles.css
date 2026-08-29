@@ -2,6 +2,21 @@
    Komore Coffee - Custom Styles
    ======================================== */
 
+/* Image Loading */
+img {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+img[loading="lazy"] {
+  opacity: 0;
+}
+
+img.loaded,
+img:not([loading="lazy"]) {
+  opacity: 1;
+}
+
 /* Navbar Scroll Effect */
 #navbar {
   background: transparent;
