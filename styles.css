@@ -1,0 +1,180 @@
+/* ========================================
+   Komore Coffee - Custom Styles
+   ======================================== */
+
+/* Navbar Scroll Effect */
+#navbar {
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+#navbar.scrolled {
+  background: rgba(255, 249, 243, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+#navbar.scrolled .nav-link {
+  color: #4A3B24;
+}
+
+/* Menu Tab Active State */
+.menu-tab {
+  color: #6B5535;
+  background: transparent;
+}
+
+.menu-tab:hover {
+  background: rgba(139, 111, 71, 0.1);
+}
+
+.menu-tab.active {
+  background: #2C1810;
+  color: #FFF9F3;
+}
+
+/* Menu Card Animation */
+.menu-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-card.hidden {
+  display: none;
+}
+
+.menu-card.show {
+  display: block;
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Drawer */
+#mobileDrawer {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#mobileDrawer.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Back to Top Button */
+#backToTop {
+  transition: all 0.3s ease;
+}
+
+#backToTop.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Smooth Scroll for all anchor links */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Selection Color */
+::selection {
+  background: #8B6F47;
+  color: #FFF9F3;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF9F3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4A574;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8B6F47;
+}
+
+/* Focus States for Accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #8B6F47;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 2.25rem;
+  }
+}
+
+/* Hero Image Placeholder Hover */
+.group:hover .transition-transform {
+  transform: scale(1.05);
+}
+
+/* Gallery Hover Effect */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(44, 24, 16, 0.6), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover::after {
+  opacity: 1;
+}
+
+/* Loading Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #F5E6D3 25%, #FEF3E7 50%, #F5E6D3 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Print Styles */
+@media print {
+  header,
+  footer,
+  #backToTop {
+    display: none;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+}

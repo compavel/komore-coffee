@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Komore Coffee | Where Sunlight Meets Your Cup</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Komore Coffee - Cafe cozy dengan suasana hangat alami. Nikmati kopi spesial, non-kopi, dan makanan ringan. Purwokerto, Jawa Tengah.">
+  <meta name="author" content="Komore Coffee">
+
+  <!-- Google Fonts: Playfair Display & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['"Playfair Display"', 'serif'],
+          },
+          colors: {
+            cream: {
+              50: '#FFF9F3',
+              100: '#FEF3E7',
+              200: '#F5E6D3',
+              300: '#E8D5BE',
+              400: '#D4A574',
+            },
+            bark: {
+              500: '#8B6F47',
+              600: '#6B5535',
+              700: '#4A3B24',
+              800: '#2C1810',
+              900: '#1A0E08',
+            },
+            moss: {
+              400: '#8CB369',
+              500: '#6B8F4A',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-cream-50 text-bark-800 font-sans antialiased selection:bg-bark-500 selection:text-cream-50 min-h-screen">
+
+  <!-- Background Subtle Texture -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_20%,#D4A57410_0%,transparent_50%)]"></div>
+    <div class="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_80%,#8CB36908_0%,transparent_50%)]"></div>
+  </div>
+
+  <!-- Header / Navbar -->
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+    <nav class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-2 group">
+        <div class="w-10 h-10 rounded-full bg-bark-800 flex items-center justify-center text-cream-100 font-heading font-semibold text-sm group-hover:bg-bark-700 transition-colors">
+          K
+        </div>
+        <span class="font-heading font-semibold text-bark-800 text-lg tracking-wide">Komore</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <ul class="hidden md:flex items-center gap-8">
+        <li><a href="#hero" class="nav-link text-bark-600 hover:text-bark-800 text-sm font-medium transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-bark-500 after:transition-all hover:after:w-full">Home</a></li>
+        <li><a href="#menu" class="nav-link text-bark-600 hover:text-bark-800 text-sm font-medium transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-bark-500 after:transition-all hover:after:w-full">Menu</a></li>
+        <li><a href="#about" class="nav-link text-bark-600 hover:text-bark-800 text-sm font-medium transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-bark-500 after:transition-all hover:after:w-full">Tentang</a></li>
+        <li><a href="#gallery" class="nav-link text-bark-600 hover:text-bark-800 text-sm font-medium transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-bark-500 after:transition-all hover:after:w-full">Galeri</a></li>
+        <li><a href="#location" class="nav-link text-bark-600 hover:text-bark-800 text-sm font-medium transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-bark-500 after:transition-all hover:after:w-full">Lokasi</a></li>
+      </ul>
+
+      <!-- CTA & Mobile Toggle -->
+      <div class="flex items-center gap-3">
+        <a href="#menu" class="hidden sm:inline-flex px-5 py-2.5 rounded-full bg-bark-800 text-cream-100 font-medium text-sm hover:bg-bark-700 transition-all hover:scale-105 active:scale-95 shadow-md">
+          Lihat Menu
+        </a>
+        <button id="mobileMenuBtn" class="md:hidden p-2 rounded-full text-bark-600 hover:text-bark-800 hover:bg-bark-800/10 transition-all" aria-label="Toggle Menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobileDrawer" class="fixed inset-x-4 top-20 z-40 bg-cream-50/95 backdrop-blur-xl border border-bark-800/10 rounded-2xl p-5 shadow-2xl transition-all duration-300 opacity-0 pointer-events-none translate-y-[-10px]">
+    <div class="flex flex-col gap-2">
+      <a href="#hero" class="mobile-nav-link text-bark-700 hover:text-bark-800 hover:bg-bark-800/5 px-4 py-3 rounded-xl font-medium text-sm transition-all flex items-center justify-between">
+        <span>Home</span>
+        <i data-lucide="home" class="w-4 h-4 text-bark-400"></i>
+      </a>
+      <a href="#menu" class="mobile-nav-link text-bark-700 hover:text-bark-800 hover:bg-bark-800/5 px-4 py-3 rounded-xl font-medium text-sm transition-all flex items-center justify-between">
+        <span>Menu</span>
+        <i data-lucide="coffee" class="w-4 h-4 text-bark-400"></i>
+      </a>
+      <a href="#about" class="mobile-nav-link text-bark-700 hover:text-bark-800 hover:bg-bark-800/5 px-4 py-3 rounded-xl font-medium text-sm transition-all flex items-center justify-between">
+        <span>Tentang</span>
+        <i data-lucide="info" class="w-4 h-4 text-bark-400"></i>
+      </a>
+      <a href="#gallery" class="mobile-nav-link text-bark-700 hover:text-bark-800 hover:bg-bark-800/5 px-4 py-3 rounded-xl font-medium text-sm transition-all flex items-center justify-between">
+        <span>Galeri</span>
+        <i data-lucide="image" class="w-4 h-4 text-bark-400"></i>
+      </a>
+      <a href="#location" class="mobile-nav-link text-bark-700 hover:text-bark-800 hover:bg-bark-800/5 px-4 py-3 rounded-xl font-medium text-sm transition-all flex items-center justify-between">
+        <span>Lokasi</span>
+        <i data-lucide="map-pin" class="w-4 h-4 text-bark-400"></i>
+      </a>
+    </div>
+  </div>
+
+  <main class="relative z-10">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="min-h-screen flex items-center pt-20">
+      <div class="max-w-6xl mx-auto px-5 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Hero Text -->
+        <div class="flex flex-col items-start gap-6">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-moss-400/10 border border-moss-400/20 text-moss-500 text-xs font-semibold tracking-wide">
+            <i data-lucide="leaf" class="w-3.5 h-3.5"></i>
+            <span>Purwokerto, Jawa Tengah</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-bark-800 leading-[1.1] tracking-tight">
+            Where sunlight<br>
+            <span class="text-bark-500 italic">meets your cup</span>
+          </h1>
+
+          <p class="text-bark-600 text-base sm:text-lg leading-relaxed max-w-md">
+            Nikmati secangkir kopi spesial di tempat yang hangat dan tenang. Komore Coffee hadir untuk menemani momen istimahamu.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#menu" class="px-6 py-3 rounded-full bg-bark-800 text-cream-100 font-semibold text-sm hover:bg-bark-700 transition-all hover:scale-105 active:scale-95 shadow-lg flex items-center gap-2">
+              <span>Explore Menu</span>
+              <i data-lucide="arrow-down" class="w-4 h-4"></i>
+            </a>
+            <a href="#about" class="px-6 py-3 rounded-full bg-transparent border-2 border-bark-800/20 text-bark-700 font-semibold text-sm hover:border-bark-800/40 hover:bg-bark-800/5 transition-all">
+              Tentang Kami
+            </a>
+          </div>
+
+          <!-- Quick Info -->
+          <div class="flex items-center gap-6 pt-4 text-sm text-bark-500">
+            <div class="flex items-center gap-2">
+              <i data-lucide="clock" class="w-4 h-4 text-moss-500"></i>
+              <span>08.00 - 22.00</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="wifi" class="w-4 h-4 text-moss-500"></i>
+              <span>Free Wi-Fi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="flex justify-center lg:justify-end">
+          <div class="relative w-full max-w-md">
+            <div class="aspect-[4/5] rounded-3xl overflow-hidden bg-cream-200 shadow-2xl">
+              <!-- Placeholder - ganti dengan gambar asli -->
+              <div class="w-full h-full bg-gradient-to-br from-cream-200 via-cream-300 to-bark-500/20 flex flex-col items-center justify-center p-8 text-center">
+                <div class="w-24 h-24 rounded-full bg-cream-100/80 border border-bark-500/10 flex items-center justify-center mb-4 shadow-lg">
+                  <i data-lucide="coffee" class="w-12 h-12 text-bark-500"></i>
+                </div>
+                <p class="text-bark-600 font-heading text-lg font-semibold">Komore Coffee</p>
+                <p class="text-bark-400 text-sm mt-1">Tempatmu ngopi santai</p>
+              </div>
+            </div>
+            <!-- Floating Badge -->
+            <div class="absolute -bottom-4 -left-4 bg-cream-100 border border-bark-800/10 px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-moss-400/20 text-moss-500 flex items-center justify-center">
+                <i data-lucide="star" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-[11px] text-bark-400">Specialty</p>
+                <p class="text-sm font-semibold text-bark-800">100% Arabica</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU SECTION -->
+    <section id="menu" class="py-20 scroll-mt-20">
+      <div class="max-w-6xl mx-auto px-5">
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+          <span class="inline-block px-4 py-1.5 rounded-full bg-bark-800/5 text-bark-500 text-xs font-semibold tracking-wider uppercase mb-4">Our Menu</span>
+          <h2 class="text-3xl sm:text-4xl font-heading font-bold text-bark-800 tracking-tight">Pilihan Terbaik Untukmu</h2>
+          <p class="text-bark-500 text-sm mt-3 max-w-md mx-auto">Dibuat dengan biji kopi pilihan dan bahan-bahan segar berkualitas</p>
+        </div>
+
+        <!-- Menu Filter Tabs -->
+        <div class="flex justify-center mb-10">
+          <div class="inline-flex items-center gap-1 p-1 bg-bark-800/5 rounded-full">
+            <button class="menu-tab active px-5 py-2 rounded-full text-sm font-medium transition-all" data-filter="all">Semua</button>
+            <button class="menu-tab px-5 py-2 rounded-full text-sm font-medium transition-all" data-filter="kopi">Kopi</button>
+            <button class="menu-tab px-5 py-2 rounded-full text-sm font-medium transition-all" data-filter="non-kopi">Non-Kopi</button>
+            <button class="menu-tab px-5 py-2 rounded-full text-sm font-medium transition-all" data-filter="makanan">Makanan</button>
+          </div>
+        </div>
+
+        <!-- Menu Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="menuGrid">
+
+          <!-- Kopi Items -->
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="kopi">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-bark-800/10 flex items-center justify-center">
+                <i data-lucide="coffee" class="w-6 h-6 text-bark-600"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 18.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Espresso</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Single shot espresso dengan aroma kuat dan rasa pahit yang khas</p>
+          </div>
+
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="kopi">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-bark-800/10 flex items-center justify-center">
+                <i data-lucide="coffee" class="w-6 h-6 text-bark-600"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 22.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Americano</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Espresso dengan air panas, ringan dan menyegarkan</p>
+          </div>
+
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="kopi">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-bark-800/10 flex items-center justify-center">
+                <i data-lucide="coffee" class="w-6 h-6 text-bark-600"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 28.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Cappuccino</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Espresso, steamed milk, dan foam creamy dengan sentuhan kakao</p>
+          </div>
+
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="kopi">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-bark-800/10 flex items-center justify-center">
+                <i data-lucide="coffee" class="w-6 h-6 text-bark-600"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 28.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Cafe Latte</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Espresso dengan steamed milk yang lembut dan halus</p>
+          </div>
+
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="kopi">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-bark-800/10 flex items-center justify-center">
+                <i data-lucide="coffee" class="w-6 h-6 text-bark-600"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 32.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Mocha</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Perpaduan espresso, coklat, dan steamed milk yang nikmat</p>
+          </div>
+
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="kopi">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-bark-800/10 flex items-center justify-center">
+                <i data-lucide="coffee" class="w-6 h-6 text-bark-600"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 30.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Macchiato</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Espresso dengan sedikit foam dan steamed milk</p>
+          </div>
+
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="kopi">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-bark-800/10 flex items-center justify-center">
+                <i data-lucide="coffee" class="w-6 h-6 text-bark-600"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 30.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Flat White</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Double espresso dengan microfoam yang halus dan lembut</p>
+          </div>
+
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="kopi">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-bark-800/10 flex items-center justify-center">
+                <i data-lucide="coffee" class="w-6 h-6 text-bark-600"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 25.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Kopi Susu</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Espresso dengan susu segar dan pemanis alami</p>
+          </div>
+
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="kopi">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-bark-800/10 flex items-center justify-center">
+                <i data-lucide="coffee" class="w-6 h-6 text-bark-600"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 35.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Affogato</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Espresso yang dituangkan di atas vanilla ice cream</p>
+          </div>
+
+          <!-- Non-Kopi Items -->
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="non-kopi">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-moss-400/20 flex items-center justify-center">
+                <i data-lucide="leaf" class="w-6 h-6 text-moss-500"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 30.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Matcha Latte</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Matcha premium dengan steamed milk, lembut dan autentik</p>
+          </div>
+
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="non-kopi">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-bark-500/20 flex items-center justify-center">
+                <i data-lucide="candy" class="w-6 h-6 text-bark-500"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 28.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Chocolate</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Coklat premium dengan susu segar, manis dan creamy</p>
+          </div>
+
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="non-kopi">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-cream-300/50 flex items-center justify-center">
+                <i data-lucide="droplets" class="w-6 h-6 text-bark-400"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 28.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Vanilla Latte</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Espresso dengan vanila dan steamed milk yang harum</p>
+          </div>
+
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="non-kopi">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-orange-400/20 flex items-center justify-center">
+                <i data-lucide="sun" class="w-6 h-6 text-orange-500"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 25.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Thai Tea</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Teh Thailand asli dengan susu dan es, segar dan manis</p>
+          </div>
+
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="non-kopi">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-yellow-400/20 flex items-center justify-center">
+                <i data-lucide="sun" class="w-6 h-6 text-yellow-500"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 22.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Lemon Tea</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Teh segar dengan perasan lemon alami, cocok untuk hari panas</p>
+          </div>
+
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="non-kopi">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-orange-400/20 flex items-center justify-center">
+                <i data-lucide="citrus" class="w-6 h-6 text-orange-400"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 28.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Fresh Orange</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Jus jeruk segar diperas langsung, kaya vitamin C</p>
+          </div>
+
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="non-kopi">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-green-400/20 flex items-center justify-center">
+                <i data-lucide="apple" class="w-6 h-6 text-green-500"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 35.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Avocado Coffee</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Perpaduan alpukat segar, espresso, dan susu yang creamy</p>
+          </div>
+
+          <!-- Makanan Items -->
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="makanan">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-amber-400/20 flex items-center justify-center">
+                <i data-lucide="croissant" class="w-6 h-6 text-amber-600"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 22.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Croissant</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Croissant mentega renyah dan lembut di dalam</p>
+          </div>
+
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="makanan">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-bark-500/20 flex items-center justify-center">
+                <i data-lucide="cake" class="w-6 h-6 text-bark-500"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 18.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Muffin Coklat</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Muffin coklat lembut dengan chocolate chips</p>
+          </div>
+
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="makanan">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-yellow-400/20 flex items-center justify-center">
+                <i data-lucide="banana" class="w-6 h-6 text-yellow-500"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 20.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Banana Bread</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Roti pisang manis dengan tekstur lembut dan moist</p>
+          </div>
+
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="makanan">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-orange-400/20 flex items-center justify-center">
+                <i data-lucide="sandwich" class="w-6 h-6 text-orange-500"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 35.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Chicken Sandwich</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Roti gandum dengan ayam panggang, selada, dan saus spesial</p>
+          </div>
+
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="makanan">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-orange-400/20 flex items-center justify-center">
+                <i data-lucide="sandwich" class="w-6 h-6 text-orange-500"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 40.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Club Sandwich</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Triple layer sandwich dengan ayam, telur, dan sayuran segar</p>
+          </div>
+
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="makanan">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-yellow-400/20 flex items-center justify-center">
+                <i data-lucide="flame" class="w-6 h-6 text-yellow-500"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 25.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">French Fries</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Kentang goreng renyah dengan salt dan seasoning</p>
+          </div>
+
+          <div class="menu-card bg-cream-100 border border-bark-800/5 rounded-2xl p-5 hover:shadow-lg hover:border-bark-800/10 transition-all duration-300 hover:-translate-y-1" data-category="makanan">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-12 h-12 rounded-xl bg-red-400/20 flex items-center justify-center">
+                <i data-lucide="utensils" class="w-6 h-6 text-red-400"></i>
+              </div>
+              <span class="text-bark-500 font-heading font-semibold text-lg">Rp 30.000</span>
+            </div>
+            <h3 class="text-bark-800 font-semibold text-base mb-1">Nachos</h3>
+            <p class="text-bark-500 text-xs leading-relaxed">Nachos renyah dengan cheese sauce dan salsa segar</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 bg-bark-800 scroll-mt-20">
+      <div class="max-w-6xl mx-auto px-5">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- About Image -->
+          <div class="relative">
+            <div class="aspect-[4/3] rounded-3xl overflow-hidden bg-bark-700">
+              <!-- Placeholder -->
+              <div class="w-full h-full bg-gradient-to-br from-bark-700 via-bark-600 to-bark-500/30 flex flex-col items-center justify-center p-8 text-center">
+                <div class="w-20 h-20 rounded-full bg-cream-100/10 border border-cream-100/20 flex items-center justify-center mb-4">
+                  <i data-lucide="trees" class="w-10 h-10 text-cream-200/60"></i>
+                </div>
+                <p class="text-cream-200/60 font-heading text-lg">Suasana Komore</p>
+              </div>
+            </div>
+            <!-- Floating Year Badge -->
+            <div class="absolute -top-4 -right-4 bg-cream-100 border border-bark-800/10 px-4 py-2 rounded-2xl shadow-xl">
+              <p class="text-bark-800 font-heading font-bold text-sm">Est. 2024</p>
+            </div>
+          </div>
+
+          <!-- About Content -->
+          <div class="flex flex-col gap-6">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-cream-100/10 text-cream-200/80 text-xs font-semibold tracking-wider uppercase w-fit">Tentang Kami</span>
+
+            <h2 class="text-3xl sm:text-4xl font-heading font-bold text-cream-100 tracking-tight leading-tight">
+              Dari matahari pagi<br>sampai senja
+            </h2>
+
+            <p class="text-cream-200/70 text-sm sm:text-base leading-relaxed">
+              Komore Coffee terinspirasi dari <span class="text-cream-100 font-medium">Komorebi</span> (木漏れ日) — cahaya matahari yang menembus celah daun. Kami ingin menciptakan tempat yang hangat, tenang, dan natural — seperti duduk di bawah pohon sambil menikmati secangkir kopi terbaik.
+            </p>
+
+            <p class="text-cream-200/70 text-sm sm:text-base leading-relaxed">
+              Setiap kopi yang kami sajikan dibuat dari biji pilihan lokal Indonesia, dipanggang dengan cermat, dan diseduh oleh barista berpengalaman.
+            </p>
+
+            <!-- Value Pillars -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-moss-400/20 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="leaf" class="w-5 h-5 text-moss-400"></i>
+                </div>
+                <div>
+                  <p class="text-cream-100 text-sm font-semibold">100% Arabica</p>
+                  <p class="text-cream-200/50 text-xs">Biji pilihan lokal</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-moss-400/20 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="heart" class="w-5 h-5 text-moss-400"></i>
+                </div>
+                <div>
+                  <p class="text-cream-100 text-sm font-semibold">Made with Love</p>
+                  <p class="text-cream-200/50 text-xs">Diseduh manual</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-moss-400/20 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="clock" class="w-5 h-5 text-moss-400"></i>
+                </div>
+                <div>
+                  <p class="text-cream-100 text-sm font-semibold">Buka Setiap Hari</p>
+                  <p class="text-cream-200/50 text-xs">08.00 - 22.00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="gallery" class="py-20 scroll-mt-20">
+      <div class="max-w-6xl mx-auto px-5">
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+          <span class="inline-block px-4 py-1.5 rounded-full bg-bark-800/5 text-bark-500 text-xs font-semibold tracking-wider uppercase mb-4">Galeri</span>
+          <h2 class="text-3xl sm:text-4xl font-heading font-bold text-bark-800 tracking-tight">Suasana Komore</h2>
+          <p class="text-bark-500 text-sm mt-3 max-w-md mx-auto">Momennya, suasananya, kopinya</p>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="aspect-square rounded-2xl bg-cream-200 overflow-hidden group cursor-pointer">
+            <div class="w-full h-full bg-gradient-to-br from-cream-200 to-bark-400/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+              <i data-lucide="coffee" class="w-10 h-10 text-bark-400/50"></i>
+            </div>
+          </div>
+          <div class="aspect-square rounded-2xl bg-cream-200 overflow-hidden group cursor-pointer md:row-span-2">
+            <div class="w-full h-full bg-gradient-to-br from-bark-500/20 to-cream-200 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+              <i data-lucide="store" class="w-10 h-10 text-bark-400/50"></i>
+            </div>
+          </div>
+          <div class="aspect-square rounded-2xl bg-cream-200 overflow-hidden group cursor-pointer">
+            <div class="w-full h-full bg-gradient-to-br from-moss-400/10 to-cream-200 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+              <i data-lucide="leaf" class="w-10 h-10 text-bark-400/50"></i>
+            </div>
+          </div>
+          <div class="aspect-square rounded-2xl bg-cream-200 overflow-hidden group cursor-pointer">
+            <div class="w-full h-full bg-gradient-to-br from-cream-300 to-bark-400/10 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+              <i data-lucide="sun" class="w-10 h-10 text-bark-400/50"></i>
+            </div>
+          </div>
+          <div class="aspect-square rounded-2xl bg-cream-200 overflow-hidden group cursor-pointer">
+            <div class="w-full h-full bg-gradient-to-br from-cream-200 to-bark-500/15 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+              <i data-lucide="book-open" class="w-10 h-10 text-bark-400/50"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATION SECTION -->
+    <section id="location" class="py-20 bg-cream-200/50 scroll-mt-20">
+      <div class="max-w-6xl mx-auto px-5">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <!-- Location Info -->
+          <div class="flex flex-col gap-6">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-bark-800/5 text-bark-500 text-xs font-semibold tracking-wider uppercase w-fit">Lokasi</span>
+
+            <h2 class="text-3xl sm:text-4xl font-heading font-bold text-bark-800 tracking-tight">
+              Datang dan nikmati
+            </h2>
+
+            <p class="text-bark-500 text-sm sm:text-base leading-relaxed">
+              Kami berada di jantung kota Purwokerto. Tempat yang nyaman untuk ngopi, kerja, atau sekadar nongkrong.
+            </p>
+
+            <div class="space-y-4">
+              <div class="flex items-start gap-4 p-4 bg-cream-100 rounded-2xl border border-bark-800/5">
+                <div class="w-10 h-10 rounded-xl bg-bark-800/10 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="map-pin" class="w-5 h-5 text-bark-600"></i>
+                </div>
+                <div>
+                  <p class="text-bark-800 font-semibold text-sm">Alamat</p>
+                  <p class="text-bark-500 text-sm">Jl. Senja No. 123, Purwokerto Timur, Banyumas, Jawa Tengah</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-4 bg-cream-100 rounded-2xl border border-bark-800/5">
+                <div class="w-10 h-10 rounded-xl bg-bark-800/10 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="clock" class="w-5 h-5 text-bark-600"></i>
+                </div>
+                <div>
+                  <p class="text-bark-800 font-semibold text-sm">Jam Buka</p>
+                  <p class="text-bark-500 text-sm">Setiap Hari: 08.00 - 22.00 WIB</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-4 bg-cream-100 rounded-2xl border border-bark-800/5">
+                <div class="w-10 h-10 rounded-xl bg-bark-800/10 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="phone" class="w-5 h-5 text-bark-600"></i>
+                </div>
+                <div>
+                  <p class="text-bark-800 font-semibold text-sm">Kontak</p>
+                  <p class="text-bark-500 text-sm">0812-3456-7890</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-4 bg-cream-100 rounded-2xl border border-bark-800/5">
+                <div class="w-10 h-10 rounded-xl bg-bark-800/10 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="instagram" class="w-5 h-5 text-bark-600"></i>
+                </div>
+                <div>
+                  <p class="text-bark-800 font-semibold text-sm">Instagram</p>
+                  <p class="text-bark-500 text-sm">@komore.coffee</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map Placeholder -->
+          <div class="aspect-square lg:aspect-[4/3] rounded-3xl overflow-hidden bg-cream-200 border border-bark-800/5">
+            <div class="w-full h-full bg-gradient-to-br from-cream-200 to-moss-400/10 flex flex-col items-center justify-center p-6 text-center">
+              <div class="w-16 h-16 rounded-full bg-bark-800/10 flex items-center justify-center mb-4">
+                <i data-lucide="map" class="w-8 h-8 text-bark-400"></i>
+              </div>
+              <p class="text-bark-500 font-medium text-sm">Google Maps</p>
+              <p class="text-bark-400 text-xs mt-1">Embed peta di sini</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-bark-800 py-12 px-5">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+        <!-- Brand -->
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-2">
+            <div class="w-10 h-10 rounded-full bg-cream-100 flex items-center justify-center text-bark-800 font-heading font-semibold text-sm">
+              K
+            </div>
+            <span class="font-heading font-semibold text-cream-100 text-lg">Komore Coffee</span>
+          </div>
+          <p class="text-cream-200/50 text-sm leading-relaxed">
+            Where sunlight meets your cup. Nikmati secangkir kopi spesial di tempat yang hangat dan tenang.
+          </p>
+          <!-- Social Links -->
+          <div class="flex items-center gap-3 pt-2">
+            <a href="#" class="w-9 h-9 rounded-full bg-cream-100/10 flex items-center justify-center text-cream-200/60 hover:bg-cream-100/20 hover:text-cream-100 transition-all">
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-full bg-cream-100/10 flex items-center justify-center text-cream-200/60 hover:bg-cream-100/20 hover:text-cream-100 transition-all">
+              <i data-lucide="facebook" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-full bg-cream-100/10 flex items-center justify-center text-cream-200/60 hover:bg-cream-100/20 hover:text-cream-100 transition-all">
+              <i data-lucide="twitter" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="flex flex-col gap-3">
+          <h4 class="text-cream-100 font-semibold text-sm mb-2">Navigasi</h4>
+          <a href="#hero" class="text-cream-200/50 text-sm hover:text-cream-100 transition-colors">Home</a>
+          <a href="#menu" class="text-cream-200/50 text-sm hover:text-cream-100 transition-colors">Menu</a>
+          <a href="#about" class="text-cream-200/50 text-sm hover:text-cream-100 transition-colors">Tentang Kami</a>
+          <a href="#gallery" class="text-cream-200/50 text-sm hover:text-cream-100 transition-colors">Galeri</a>
+          <a href="#location" class="text-cream-200/50 text-sm hover:text-cream-100 transition-colors">Lokasi</a>
+        </div>
+
+        <!-- Contact -->
+        <div class="flex flex-col gap-3">
+          <h4 class="text-cream-100 font-semibold text-sm mb-2">Kontak</h4>
+          <div class="flex items-center gap-2 text-cream-200/50 text-sm">
+            <i data-lucide="map-pin" class="w-4 h-4 flex-shrink-0"></i>
+            <span>Jl. Senja No. 123, Purwokerto</span>
+          </div>
+          <div class="flex items-center gap-2 text-cream-200/50 text-sm">
+            <i data-lucide="phone" class="w-4 h-4 flex-shrink-0"></i>
+            <span>0812-3456-7890</span>
+          </div>
+          <div class="flex items-center gap-2 text-cream-200/50 text-sm">
+            <i data-lucide="clock" class="w-4 h-4 flex-shrink-0"></i>
+            <span>Setiap Hari, 08.00 - 22.00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-cream-100/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-cream-200/40 text-xs">
+          &copy; <span id="currentYear"></span> Komore Coffee. All rights reserved.
+        </p>
+        <a href="#hero" class="text-cream-200/40 text-xs hover:text-cream-100 transition-colors flex items-center gap-1">
+          <span>Kembali ke atas</span>
+          <i data-lucide="arrow-up" class="w-3 h-3"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-bark-800 text-cream-100 shadow-xl flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-bark-700 hover:scale-110">
+    <i data-lucide="arrow-up" class="w-5 h-5"></i>
+  </button>
+
+  <!-- Custom JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
